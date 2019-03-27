@@ -1,42 +1,19 @@
-#
-# Be sure to run `pod lib lint MRBanner.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
 
 Pod::Spec.new do |s|
   s.name             = 'MRBanner'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MRBanner.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
+  s.summary          = '轮播图,支持背景色跟随变化'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+                        轮播图,支持背景色跟随变化
                        DESC
-
-  s.homepage         = 'https://github.com/301063915@qq.com/MRBanner'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/MQL9011/MRBanner.git'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '301063915@qq.com' => '301063915@qq.com' }
-  s.source           = { :git => 'https://github.com/301063915@qq.com/MRBanner.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/MQL9011/MRBanner.git', :tag => s.version.to_s }
+  s.social_media_url = 'http://www.mccree.info:9000/'
 
   s.ios.deployment_target = '8.0'
-
   s.source_files = 'MRBanner/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'MRBanner' => ['MRBanner/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.public_header_files = 'MRBanner/Classes/**/*.h'
+  s.dependency 'SDWebImage'
 end
