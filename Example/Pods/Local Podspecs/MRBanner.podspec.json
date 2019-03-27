@@ -20,7 +20,7 @@
     "ios": "8.0"
   },
   "source_files": "MRBanner/Classes/**/*",
-  "public_header_files": "MRBanner/Classes/**/*.h",
+  "public_header_files": "MRBanner/Classes/*.h",
   "dependencies": {
     "SDWebImage": [
 

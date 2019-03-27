@@ -6,8 +6,8 @@
 //  Copyright © 2019年 MccRee. All rights reserved.
 //
 
-#import "KNBannerViewModel.h"
+#import "MRBannerViewModel.h"
 
-@implementation KNBannerViewModel
+@implementation MRBannerViewModel
 
 @end

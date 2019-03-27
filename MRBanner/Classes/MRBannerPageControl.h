@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class KNBannerViewModel;
+@class MRBannerViewModel;
 
-@interface KNBannerPageControl : UIView
+@interface MRBannerPageControl : UIView
 
-@property (nonatomic, strong) KNBannerViewModel *bannerViewModel;
+@property (nonatomic, strong) MRBannerViewModel *bannerViewModel;
 
 @property (nonatomic, assign) NSInteger currentPage;
 

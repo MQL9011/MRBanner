@@ -6,9 +6,9 @@
 //  Copyright © 2019年 MccRee. All rights reserved.
 //
 
-#import "KNWeekProxy.h"
+#import "MRWeekProxy.h"
 
-@implementation KNWeekProxy
+@implementation MRWeekProxy
 
 - (instancetype)initWithTarget:(id)target{
     _target = target;

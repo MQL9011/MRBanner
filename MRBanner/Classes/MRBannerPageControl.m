@@ -6,14 +6,14 @@
 //  Copyright © 2019年 MccRee. All rights reserved.
 //
 
-#import "KNBannerPageControl.h"
-#import "UIView+KNExtension.h"
-#import "KNCustomPageControl.h"
-#import "KNBannerViewModel.h"
+#import "MRBannerPageControl.h"
+#import "UIView+MRExtension.h"
+#import "MRCustomPageControl.h"
+#import "MRBannerViewModel.h"
 
-@implementation KNBannerPageControl{
+@implementation MRBannerPageControl{
     UIPageControl *_pageControl;
-    KNCustomPageControl *_customPageControl;
+    MRCustomPageControl *_customPageControl;
     
 }
 
@@ -30,13 +30,13 @@
     _pageControl = pageControl;
     [self addSubview:pageControl];
     
-    // 2.KNCustomPageControl
-    KNCustomPageControl *customPageControl = [[KNCustomPageControl alloc] init];
+    // 2.CustomPageControl
+    MRCustomPageControl *customPageControl = [[MRCustomPageControl alloc] init];
     _customPageControl = customPageControl;
     [self addSubview:customPageControl];
 }
 
-- (void)setBannerViewModel:(KNBannerViewModel *)bannerViewModel{
+- (void)setBannerViewModel:(MRBannerViewModel *)bannerViewModel{
     _bannerViewModel = bannerViewModel;
     
     if([self isEmptyArray:bannerViewModel.pageControlImgArr]){ // 系统的 pageControl
@@ -83,13 +83,13 @@
     
     // 4 * 10 + ( 4 - 1) * 5 : pageControl base enum to set frame
     switch ([_bannerViewModel pageControlStyle]) {
-        case KNBannerPageControlStyleMiddel:
+        case MRBannerPageControlStyleMiddel:
             _pageControl.frame = CGRectMake(0,0, self.width, 30);
             break;
-        case KNBannerPageControlStyleLeft:
+        case MRBannerPageControlStyleLeft:
             _pageControl.frame = CGRectMake(10 - self.width * 0.5 + [_bannerViewModel numberOfPages] * 0.5 * 10 + ([_bannerViewModel numberOfPages] - 1)  * 0.5 * 5, 0, self.width, 30);
             break;
-        case KNBannerPageControlStyleRight:
+        case MRBannerPageControlStyleRight:
             _pageControl.frame = CGRectMake(self.width * 0.5 - ([_bannerViewModel numberOfPages] * 10 + ([_bannerViewModel numberOfPages] - 1) * 5) * 0.5 - 10, 0,self.width, 30);
             break;
         default:
@@ -100,15 +100,15 @@
         UIImage *image = [_bannerViewModel pageControlImgArr][0];
         CGFloat width = [_bannerViewModel numberOfPages] * (image.size.width + 5);
         switch ([_bannerViewModel pageControlStyle]) {
-            case KNBannerPageControlStyleLeft:{
+            case MRBannerPageControlStyleLeft:{
                 _customPageControl.frame = CGRectMake(5, 0, width, 30);
             }
                 break;
-            case KNBannerPageControlStyleMiddel:{
+            case MRBannerPageControlStyleMiddel:{
                 _customPageControl.frame = CGRectMake((self.width - width) * 0.5, 0, width, 30);
             }
                 break;
-            case KNBannerPageControlStyleRight:{
+            case MRBannerPageControlStyleRight:{
                 _customPageControl.frame = CGRectMake(self.width - width - 5, 0, width, 30);
             }
                 break;

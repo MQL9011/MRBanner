@@ -6,24 +6,24 @@
 //  Copyright © 2019年 MccRee. All rights reserved.
 //
 
-#import "KNBannerView.h"
-#import "KNBannerCollectionViewCell.h"
-#import "KNBannerViewText.h"
-#import "UIView+KNExtension.h"
-#import "KNBannerPageControl.h"
+#import "MRBannerView.h"
+#import "MRBannerCollectionViewCell.h"
+#import "MRBannerViewText.h"
+#import "UIView+MRExtension.h"
+#import "MRBannerPageControl.h"
 
-#import "KNWeekProxy.h"
+#import "MRWeekProxy.h"
 
-@interface KNBannerView()<UICollectionViewDelegate,UICollectionViewDataSource>{
+@interface MRBannerView()<UICollectionViewDelegate,UICollectionViewDataSource>{
     UICollectionView            *_collectionView;
     UICollectionViewFlowLayout  *_layout;
-    KNBannerCollectionViewCell  *_collectionViewCell;
-    KNBannerCollectionViewCell  *_collectionUseCell;
-    KNBannerViewModel           *_defaultModel;// 默认的模型
+    MRBannerCollectionViewCell  *_collectionViewCell;
+    MRBannerCollectionViewCell  *_collectionUseCell;
+    MRBannerViewModel           *_defaultModel;// 默认的模型
     NSTimer                     *_bannerTimer; // bannerView 的 timer
-    KNBannerViewText            *_viewText; // 文字 view
+    MRBannerViewText            *_viewText; // 文字 view
     BOOL                        _isNeedText;
-    KNBannerPageControl         *_pageControl;
+    MRBannerPageControl         *_pageControl;
     NSInteger                   _kAcount; // 图片的倍数 =   * 100
     
     CGFloat                     _lastContentOffsetX; // 滑动到中间时,偏移量
@@ -36,9 +36,9 @@
 
 @end
 
-static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
+static NSString *const MRCollectionViewID = @"MRBannerViewCollectionViewID";
 
-@implementation KNBannerView
+@implementation MRBannerView
 
 - (NSMutableArray *)imageArr{
     if (!_imageArr) {
@@ -48,19 +48,19 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 
 + (instancetype)bannerViewWithNetWorkImagesArr:(NSArray *)netWorkImgArr frame:(CGRect)frame{
-    KNBannerView *bannerView = [[self alloc] initWithFrame:frame];
+    MRBannerView *bannerView = [[self alloc] initWithFrame:frame];
     if([self isEmptyArray:netWorkImgArr]) return bannerView;
     [bannerView setNetWorkImgArr:[netWorkImgArr mutableCopy]];
     return bannerView;
 }
 + (instancetype)bannerViewWithLocationImagesArr:(NSArray *)locationImgArr frame:(CGRect)frame{
-    KNBannerView *bannerView = [[self alloc] initWithFrame:frame];
+    MRBannerView *bannerView = [[self alloc] initWithFrame:frame];
     if([self isEmptyArray:locationImgArr]) return bannerView;
     [bannerView setLocationImgArr:[locationImgArr mutableCopy]];
     return bannerView;
 }
 + (instancetype)bannerViewWithBlendImagesArr:(NSArray *)blendImgArr frame:(CGRect)frame{
-    KNBannerView *bannerView = [[self alloc] initWithFrame:frame];
+    MRBannerView *bannerView = [[self alloc] initWithFrame:frame];
     if([self isEmptyArray:blendImgArr]) return bannerView;
     [bannerView setBlendImgArr:[blendImgArr mutableCopy]];
     return bannerView;
@@ -193,14 +193,14 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 
 #pragma mark - 初始化 默认数据
 - (void)initializeDefaultData{
-    _defaultModel = [[KNBannerViewModel alloc] init];
+    _defaultModel = [[MRBannerViewModel alloc] init];
     
-    [_defaultModel setTextStayStyle:KNBannerViewTextStayStyleLeft];
+    [_defaultModel setTextStayStyle:MRBannerViewTextStayStyleLeft];
     [_defaultModel setTextColor:[UIColor whiteColor]];
     [_defaultModel setTextFont:[UIFont fontWithName:@"Heiti SC" size:15]];
     [_defaultModel setTextBackGroundColor:[UIColor blackColor]];
     [_defaultModel setTextBackGroundAlpha:0.7f];
-    [_defaultModel setTextShowStyle:KNBannerViewTextShowStyleNormal];
+    [_defaultModel setTextShowStyle:MRBannerViewTextShowStyleNormal];
     [_defaultModel setBannerTimeInterval:1.5f];
     [_defaultModel setIsNeedTimerRun:NO];
     [_defaultModel setPlaceHolder:[self createImageWithUIColor:[UIColor lightTextColor]]];
@@ -210,7 +210,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [_defaultModel setCurrentPageIndicatorTintColor:[UIColor greenColor]];
     [_defaultModel setPageIndicatorTintColor:[UIColor whiteColor]];
     [_defaultModel setIsNeedPageControl:NO];
-    [_defaultModel setPageControlStyle:KNBannerPageControlStyleRight];
+    [_defaultModel setPageControlStyle:MRBannerPageControlStyleRight];
     [_defaultModel setNumberOfPages:self.imageArr.count];
     
     
@@ -220,7 +220,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 
 #pragma mark - 设置 text 的参数
-- (void)setBannerViewModel:(KNBannerViewModel *)bannerViewModel{
+- (void)setBannerViewModel:(MRBannerViewModel *)bannerViewModel{
     _bannerViewModel = bannerViewModel;
     [self setBannerModel];
     
@@ -274,11 +274,11 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     }
     
     switch ([_bannerViewModel textShowStyle]) {
-        case KNBannerViewTextShowStyleNormal:{
+        case MRBannerViewTextShowStyleNormal:{
             [_bannerViewModel setIsNeedText:_isNeedText];
         }
             break;
-        case KNBannerViewTextShowStyleStay:{
+        case MRBannerViewTextShowStyleStay:{
             [_bannerViewModel setIsNeedText:NO];
             if(_isNeedText){
                 if(!_viewText) [self initializeViewText];      // 初始化 text 的控件
@@ -313,7 +313,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [_bannerViewModel setNumberOfPages:self.imageArr.count];
         [_pageControl setBannerViewModel:_bannerViewModel];
     }else{ //UIPageControl
-        KNBannerViewModel *bannerViewModel = [[KNBannerViewModel alloc] init];
+        MRBannerViewModel *bannerViewModel = [[MRBannerViewModel alloc] init];
         [bannerViewModel setPageControlStyle:[_bannerViewModel pageControlStyle]];
         [bannerViewModel setPageIndicatorTintColor:[_bannerViewModel PageIndicatorTintColor]];
         [bannerViewModel setCurrentPageIndicatorTintColor:[_bannerViewModel CurrentPageIndicatorTintColor]];
@@ -345,7 +345,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 
 #pragma mark - 创建 Text 的 view控件
 - (void)initializeViewText{
-    KNBannerViewText *viewText = [[KNBannerViewText alloc] initWithFrame:CGRectMake(0, self.height - TextHeight, self.width,TextHeight)];
+    MRBannerViewText *viewText = [[MRBannerViewText alloc] initWithFrame:CGRectMake(0, self.height - TextHeight, self.width,TextHeight)];
     [viewText setBannerViewModel: self.bannerViewModel];
     [viewText setText:_bannerViewModel.textArr[0]];
     _viewText = viewText;
@@ -360,7 +360,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         return;
     }
     
-    KNBannerPageControl *pageControl = [[KNBannerPageControl alloc] init];
+    MRBannerPageControl *pageControl = [[MRBannerPageControl alloc] init];
     [pageControl setHidden:YES];
     _pageControl = pageControl;
     [self addSubview:pageControl];
@@ -389,8 +389,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [collectionView setShowsVerticalScrollIndicator:NO];
     [collectionView setShowsHorizontalScrollIndicator:NO];
     
-    [collectionView registerClass:[KNBannerCollectionViewCell class]
-       forCellWithReuseIdentifier:KNCollectionViewID];
+    [collectionView registerClass:[MRBannerCollectionViewCell class]
+       forCellWithReuseIdentifier:MRCollectionViewID];
     
     [self addSubview:collectionView];
     _collectionView = collectionView;
@@ -404,7 +404,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     return self.imageArr.count * _kAcount;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    KNBannerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:KNCollectionViewID forIndexPath:indexPath];
+    MRBannerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MRCollectionViewID forIndexPath:indexPath];
     
     NSInteger row = indexPath.row % self.imageArr.count;
     
@@ -428,7 +428,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [cell setIsSet:YES];
         [cell setBannerViewModel:_bannerViewModel];
     }
-    if([_bannerViewModel textShowStyle] == KNBannerViewTextShowStyleNormal){
+    if([_bannerViewModel textShowStyle] == MRBannerViewTextShowStyleNormal){
         if([_bannerViewModel isNeedText]){
             [cell setText:_bannerViewModel.textArr[row]];
         }
@@ -448,10 +448,10 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     NSInteger row = indexPath.row % [_imageArr count];
     
-    KNBannerCollectionViewCell *cell = (KNBannerCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    MRBannerCollectionViewCell *cell = (MRBannerCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
     if([_delegate respondsToSelector:@selector(bannerView:collectionView:collectionViewCell:didSelectItemAtIndexPath:)]){
-        [_delegate bannerView:(KNBannerView *)self
+        [_delegate bannerView:(MRBannerView *)self
                collectionView:collectionView
            collectionViewCell:cell
      didSelectItemAtIndexPath:row];
@@ -478,13 +478,13 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         
         _lastContentOffsetX = [contentOffSetX floatValue];
         
-        if([_bannerViewModel textShowStyle] != KNBannerViewTextShowStyleNormal){
+        if([_bannerViewModel textShowStyle] != MRBannerViewTextShowStyleNormal){
             NSInteger index = ([contentOffSetX integerValue] - 1) % [self.imageArr count];
             [_viewText setText:_bannerViewModel.textArr[index]];
         }
         NSInteger index = ([contentOffSetX integerValue] - 1) % [self.imageArr count];
         NSIndexPath *path = [NSIndexPath indexPathForRow:currentContentOffset / scrollViewW inSection:0];
-        _collectionUseCell = (KNBannerCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
+        _collectionUseCell = (MRBannerCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
         
         [_pageControl setCurrentPage:index]; // 设置 pageControl
         
@@ -493,7 +493,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
             if([_delegate respondsToSelector:@selector(bannerView:topColor:bottomColor:alpha:isRight:)]){
                 
-                [_delegate bannerView:(KNBannerView *)self
+                [_delegate bannerView:(MRBannerView *)self
                              topColor:_bannerViewModel.bgChangeColorArr[index]
                           bottomColor:nil
                                 alpha:1.0
@@ -505,7 +505,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         if([self isEmptyArray:_bannerViewModel.bgChangeColorArr]) return;
         
         if(cellArr.count == 2){ // 偏移 , 数组第一个颜色 : 原始颜色, 第二个 : 即将改变的颜色
-            KNBannerCollectionViewCell *cell  = cellArr.firstObject;
+            MRBannerCollectionViewCell *cell  = cellArr.firstObject;
             cell = cell == _collectionUseCell? cellArr.lastObject:cellArr.firstObject;
             if([contentOffSetX containsString:@"."]){
                 BOOL isRight = true;
@@ -519,7 +519,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
                 
                 CGFloat alpha = [[@"0." stringByAppendingString:[[contentOffSetX componentsSeparatedByString:@"."] lastObject]] floatValue];
                 if([_delegate respondsToSelector:@selector(bannerView:topColor:bottomColor:alpha:isRight:)]){
-                    [_delegate bannerView:(KNBannerView *)self
+                    [_delegate bannerView:(MRBannerView *)self
                                  topColor:_collectionUseCell.bgChangeColor
                               bottomColor:cell.bgChangeColor
                                     alpha:alpha
@@ -542,7 +542,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [self removeTimer];
     }
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_bannerViewModel.bannerTimeInterval target:[KNWeekProxy proxyWithTarget:self] selector:@selector(timerRun) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_bannerViewModel.bannerTimeInterval target:[MRWeekProxy proxyWithTarget:self] selector:@selector(timerRun) userInfo:nil repeats:YES];
     _bannerTimer = timer;
     
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];

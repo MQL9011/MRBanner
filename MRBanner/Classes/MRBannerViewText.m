@@ -6,10 +6,10 @@
 //  Copyright © 2019年 MccRee. All rights reserved.
 //
 
-#import "KNBannerViewText.h"
-#import "KNBannerViewModel.h"
+#import "MRBannerViewText.h"
+#import "MRBannerViewModel.h"
 
-@implementation KNBannerViewText{
+@implementation MRBannerViewText{
     UILabel                  *_textLabel;
 }
 
@@ -26,7 +26,7 @@
     [self addSubview:textLabel];
 }
 
-- (void)setBannerViewModel:(KNBannerViewModel *)bannerViewModel{
+- (void)setBannerViewModel:(MRBannerViewModel *)bannerViewModel{
     _bannerViewModel = bannerViewModel;
     
     [self setBackgroundColor:[bannerViewModel textBackGroundColor]];
@@ -36,13 +36,13 @@
     [_textLabel setTextColor:[bannerViewModel textColor]];
     
     switch ([bannerViewModel textStayStyle]) {
-        case KNBannerViewTextStayStyleLeft:
+        case MRBannerViewTextStayStyleLeft:
             [_textLabel setTextAlignment:NSTextAlignmentLeft];
             break;
-        case KNBannerViewTextStayStyleMiddle:
+        case MRBannerViewTextStayStyleMiddle:
             [_textLabel setTextAlignment:NSTextAlignmentCenter];
             break;
-        case KNBannerViewTextStayStyleRight:
+        case MRBannerViewTextStayStyleRight:
             [_textLabel setTextAlignment:NSTextAlignmentRight];
             break;
         default:
@@ -57,13 +57,13 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     switch ([_bannerViewModel textStayStyle]) {
-        case KNBannerViewTextStayStyleLeft:
+        case MRBannerViewTextStayStyleLeft:
             [_textLabel setFrame:(CGRect){{10,0},{self.bounds.size.width - 10,self.bounds.size.height}}];
             break;
-        case KNBannerViewTextStayStyleMiddle:
+        case MRBannerViewTextStayStyleMiddle:
             [_textLabel setFrame:self.bounds];
             break;
-        case KNBannerViewTextStayStyleRight:
+        case MRBannerViewTextStayStyleRight:
             [_textLabel setFrame:(CGRect){CGPointZero,{self.bounds.size.width - 10,self.bounds.size.height}}];
             break;
         default:

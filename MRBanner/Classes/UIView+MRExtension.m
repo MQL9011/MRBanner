@@ -6,9 +6,9 @@
 //  Copyright © 2019年 MccRee. All rights reserved.
 //
 
-#import "UIView+KNExtension.h"
+#import "UIView+MRExtension.h"
 
-@implementation UIView (KNExtension)
+@implementation UIView (MRExtension)
 
 - (void)setX:(CGFloat)x{
     CGRect frame = self.frame;

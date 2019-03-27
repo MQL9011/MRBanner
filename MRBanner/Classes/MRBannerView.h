@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KNBannerViewModel.h"
-#import "KNBannerCollectionViewCell.h"
-@class KNBannerView;
+#import "MRBannerViewModel.h"
+#import "MRBannerCollectionViewCell.h"
+@class MRBannerView;
 
-@protocol KNBannerViewDelegate <NSObject>
+@protocol MRBannerViewDelegate <NSObject>
 
 @optional
 
@@ -23,7 +23,7 @@
  @param collectionViewCell 当前collectionViewCell
  @param index 当前下标
  */
-- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
+- (void)bannerView:(MRBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(MRBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
 
 /**
  当滑动 banner时, 执行的代理方法
@@ -34,14 +34,14 @@
  @param alpha 当前cell背景色需要的透明度
  @param isRight banner 是否是向右滑动
  */
-- (void)bannerView:(KNBannerView *)bannerView topColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor alpha:(CGFloat)alpha isRight:(BOOL)isRight;
+- (void)bannerView:(MRBannerView *)bannerView topColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor alpha:(CGFloat)alpha isRight:(BOOL)isRight;
 
 @end
 
-@interface KNBannerView : UIView
+@interface MRBannerView : UIView
 
 /* 代理 */
-@property (nonatomic, weak  ) id<KNBannerViewDelegate> delegate;
+@property (nonatomic, weak  ) id<MRBannerViewDelegate> delegate;
 
 /* 以下三个数组, 如果单独设置, 则是为了 切换 轮播图中的图片  */
 /* 本地图片数组 */
@@ -55,7 +55,7 @@
 @property (nonatomic,strong) NSMutableArray<UIColor *> *changeColorArr;
 
 /* 自定义信息的模型 --> 一次性全部赋值 */
-@property (nonatomic, strong) KNBannerViewModel *bannerViewModel;
+@property (nonatomic, strong) MRBannerViewModel *bannerViewModel;
 
 /* 重载数据 */
 - (void)reloadData;

@@ -6,16 +6,16 @@
 //  Copyright © 2019年 MccRee. All rights reserved.
 //
 
-#import "KNCustomPageControl.h"
+#import "MRCustomPageControl.h"
 
-@interface KNCustomPageControl()
+@interface MRCustomPageControl()
 
 @property (nonatomic, strong) NSMutableArray *layerArr;
 @property (nonatomic, assign) NSInteger  selectIndex;
 
 @end
 
-@implementation KNCustomPageControl{
+@implementation MRCustomPageControl{
     UIImage *_selectImg;
     UIImage *_unSelectImg;
 }

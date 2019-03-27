@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class KNBannerViewModel;
+@class MRBannerViewModel;
 
-@interface KNBannerViewText : UIView
+@interface MRBannerViewText : UIView
 
 /* 设置 属性  -- > 这个最好只设置一次*/
-@property (nonatomic, strong) KNBannerViewModel *bannerViewModel;
+@property (nonatomic, strong) MRBannerViewModel *bannerViewModel;
 
 /* 设置 文字 */
 @property (nonatomic, copy  ) NSString *text;

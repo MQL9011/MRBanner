@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
   s.source_files = 'MRBanner/Classes/**/*'
-  s.public_header_files = 'MRBanner/Classes/**/*.h'
+  s.public_header_files = 'MRBanner/Classes/*.h'
   s.dependency 'SDWebImage'
 end

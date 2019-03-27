@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KNBannerView.h"
+#import "MRBannerView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

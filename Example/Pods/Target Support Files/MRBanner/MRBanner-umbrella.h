@@ -10,15 +10,15 @@
 #endif
 #endif
 
-#import "KNBannerCollectionViewCell.h"
-#import "KNBannerPageControl.h"
-#import "KNBannerView.h"
-#import "KNBannerViewModel.h"
-#import "KNBannerViewText.h"
-#import "KNCustomPageControl.h"
-#import "KNWeekProxy.h"
 #import "MRBanner.h"
-#import "UIView+KNExtension.h"
+#import "MRBannerCollectionViewCell.h"
+#import "MRBannerPageControl.h"
+#import "MRBannerView.h"
+#import "MRBannerViewModel.h"
+#import "MRBannerViewText.h"
+#import "MRCustomPageControl.h"
+#import "MRWeekProxy.h"
+#import "UIView+MRExtension.h"
 
 FOUNDATION_EXPORT double MRBannerVersionNumber;
 FOUNDATION_EXPORT const unsigned char MRBannerVersionString[];

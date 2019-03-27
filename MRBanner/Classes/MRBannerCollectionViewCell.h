@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class KNBannerViewModel;
+@class MRBannerViewModel;
 
-@interface KNBannerCollectionViewCell : UICollectionViewCell
+@interface MRBannerCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) KNBannerViewModel *bannerViewModel;
+@property (nonatomic, strong) MRBannerViewModel *bannerViewModel;
 /* 网络图片 url */
 @property (nonatomic, copy  ) NSString *url;
 /* 本地图片名 */

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KNCustomPageControl : UIView
+@interface MRCustomPageControl : UIView
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger numberOfPages;

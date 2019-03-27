@@ -7,19 +7,19 @@
 //
 
 
-#import "KNBannerCollectionViewCell.h"
-#import "UIView+KNExtension.h"
+#import "MRBannerCollectionViewCell.h"
+#import "UIView+MRExtension.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "KNBannerViewModel.h"
-#import "KNBannerViewText.h"
+#import "MRBannerViewModel.h"
+#import "MRBannerViewText.h"
 
-@interface KNBannerCollectionViewCell(){
-    KNBannerViewText *_viewText; // 显示 文字的 view
+@interface MRBannerCollectionViewCell(){
+    MRBannerViewText *_viewText; // 显示 文字的 view
 }
 
 @end
 
-@implementation KNBannerCollectionViewCell
+@implementation MRBannerCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -35,7 +35,7 @@
     [self.contentView addSubview:imageView];
     _imageView = imageView;
     
-    KNBannerViewText *viewText = [[KNBannerViewText alloc] init];
+    MRBannerViewText *viewText = [[MRBannerViewText alloc] init];
     _viewText = viewText;
     [self addSubview:viewText];
 }
@@ -58,7 +58,7 @@
     }];
 }
 
-- (void)setBannerViewModel:(KNBannerViewModel *)bannerViewModel{
+- (void)setBannerViewModel:(MRBannerViewModel *)bannerViewModel{
     _bannerViewModel = bannerViewModel;
     
     if(![bannerViewModel isNeedText]){

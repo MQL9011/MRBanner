@@ -13,28 +13,28 @@
 #define TextHeight 30   // 文字View的默认高度为 30
 
 // 文字的 位置
-typedef NS_ENUM(NSInteger,KNBannerViewTextStayStyle){
-    KNBannerViewTextStayStyleLeft,  // 文字局左
-    KNBannerViewTextStayStyleMiddle,// 文字居中
-    KNBannerViewTextStayStyleRight  // 文字居右
+typedef NS_ENUM(NSInteger,MRBannerViewTextStayStyle){
+    MRBannerViewTextStayStyleLeft,  // 文字局左
+    MRBannerViewTextStayStyleMiddle,// 文字居中
+    MRBannerViewTextStayStyleRight  // 文字居右
 };
 
 // 文字的 显示方式
-typedef NS_ENUM(NSInteger,KNBannerViewTextShowStyle) {
-    KNBannerViewTextShowStyleNormal, // 跟随 cell 一起滚动, 会自动修改文字
-    KNBannerViewTextShowStyleStay    // 一直停留, 会自动修改文字
+typedef NS_ENUM(NSInteger,MRBannerViewTextShowStyle) {
+    MRBannerViewTextShowStyleNormal, // 跟随 cell 一起滚动, 会自动修改文字
+    MRBannerViewTextShowStyleStay    // 一直停留, 会自动修改文字
 };
 
-typedef NS_ENUM(NSInteger,KNBannerPageControlStyle){
-    KNBannerPageControlStyleRight,
-    KNBannerPageControlStyleLeft,
-    KNBannerPageControlStyleMiddel
+typedef NS_ENUM(NSInteger,MRBannerPageControlStyle){
+    MRBannerPageControlStyleRight,
+    MRBannerPageControlStyleLeft,
+    MRBannerPageControlStyleMiddel
 };
 
-@interface KNBannerViewModel : NSObject
+@interface MRBannerViewModel : NSObject
 
 /* 文字的位置, 默认左边 */
-@property (nonatomic, assign) KNBannerViewTextStayStyle textStayStyle;
+@property (nonatomic, assign) MRBannerViewTextStayStyle textStayStyle;
 /* 文字颜色 ,默认 whiteColor */
 @property (nonatomic, strong) UIColor *textColor;
 /* 文字的font,默认 [UIFont fontWithName:@"Heiti SC" size:15] */
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger,KNBannerPageControlStyle){
 /* 文字背景View的透明度 ,默认 0.7f*/
 @property (nonatomic, assign) CGFloat textBackGroundAlpha;
 /* 文字的显示方式, 默认 跟随一起动 */
-@property (nonatomic, assign) KNBannerViewTextShowStyle textShowStyle;
+@property (nonatomic, assign) MRBannerViewTextShowStyle textShowStyle;
 /* 文字 是否需要 ,不做 API*/
 @property (nonatomic, assign) BOOL isNeedText;
 /* 文字的数组  -->如果 文字数组 和 图片数组的个数不相等,则不显示文字*/
@@ -54,11 +54,11 @@ typedef NS_ENUM(NSInteger,KNBannerPageControlStyle){
 @property (nonatomic, assign) CGFloat bannerTimeInterval;
 /* 是否需要 定时器跑,默认 NO */
 @property (nonatomic, assign) BOOL isNeedTimerRun;
-/* 占位图 , 默认 KNBannerViewSource.bundle/placeHolder.png */
+/* 占位图 , 默认 BannerViewSource.bundle/placeHolder.png */
 @property (nonatomic, strong) UIImage *placeHolder;
 
 /* PageControl的显示样式 ,默认 居右 */
-@property (nonatomic, assign) KNBannerPageControlStyle pageControlStyle;
+@property (nonatomic, assign) MRBannerPageControlStyle pageControlStyle;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger numberOfPages;
 /* 默认绿色 */

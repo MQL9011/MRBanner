@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KNWeekProxy : NSProxy
+@interface MRWeekProxy : NSProxy
 
 @property (nonatomic,weak,readonly,nullable) id target;
 
