@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'MRBanner_Example' do
+  pod 'MRBanner', :path => '../'
+
+  target 'MRBanner_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

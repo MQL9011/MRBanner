@@ -1,0 +1,16 @@
+PODS:
+  - MRBanner (0.1.0)
+
+DEPENDENCIES:
+  - MRBanner (from `../`)
+
+EXTERNAL SOURCES:
+  MRBanner:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MRBanner: b38a5490e06c6b613c861ccde92bcaeb3b7ebed3
+
+PODFILE CHECKSUM: c7f703a2fbf286257be5f9c51c09835fa170e2e5
+
+COCOAPODS: 1.6.1

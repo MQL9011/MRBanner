@@ -1,0 +1,6 @@
+framework module MRBanner {
+  umbrella header "MRBanner-umbrella.h"
+
+  export *
+  module * { export * }
+}
