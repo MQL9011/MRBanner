@@ -56,8 +56,13 @@
     self.nextBackImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 90, self.view.frame.size.width, 180)];
     [self.view addSubview:self.nextBackImageView];
     
-    //self.bannerView = [self setupNetWorkBannerView1];
-    //[self.view addSubview:self.bannerView];
+    self.bannerView = [self setupNetWorkBannerView1];
+    [self.view addSubview:self.bannerView];
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
 }
 
 // Banner样式
@@ -89,6 +94,67 @@
     
     [bannerView setTag:0]; // 标识是哪个bannerView
     return bannerView;
+}
+
+#pragma mark MRBannerDelegate
+
+/**
+ 轮播图点击代理回调
+ @param index
+ */
+- (void)bannerView:(MRBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(MRBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index{
+    
+    NSLog(@"BannerView :%zd -- index :%zd",bannerView.tag,index);
+}
+
+
+/**
+ 轮播图滑动时背景色跟着变的代理回调
+ @param bannerView 轮播图
+ @param topColor 当前颜色
+ @param bottomColor 下一个颜色
+ @param alpha 透明度
+ @param isRight 是否向右
+ */
+- (void)bannerView:(MRBannerView *)bannerView
+          topColor:(UIColor *)topColor
+       bottomColor:(UIColor *)bottomColor
+             alpha:(CGFloat)alpha
+           isRight:(BOOL)isRight{
+    
+    
+    /* 这里是做判断 , 如果当前数据源 就一张图片时, 就不改变 背景色 */
+    /* bannerView.netWorkImgArr 对应创建时 KNBannerView bannerViewWithNetWorkImagesArr  */
+    if(bannerView.netWorkImgArr.count == 1){
+        return;
+    }
+    
+    if(topColor){
+        self.curBackImageView.backgroundColor = topColor;
+        if(bottomColor){
+            if(isRight){
+                self.curBackImageView.alpha = alpha;
+            }else{
+                self.curBackImageView.alpha = 1 - alpha;
+            }
+        }else{
+            self.curBackImageView.alpha = 1.0;
+        }
+    }else{
+        self.curBackImageView.backgroundColor = nil;
+    }
+    
+    if(bottomColor){
+        self.nextBackImageView.backgroundColor = bottomColor;
+        if(isRight){
+            self.nextBackImageView.alpha = 1 - alpha;
+        }else{
+            self.nextBackImageView.alpha = alpha;
+        }
+    }else{
+        self.nextBackImageView.backgroundColor = nil;
+        self.nextBackImageView.alpha = 0.0;
+    }
 }
 
 
