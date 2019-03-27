@@ -5,16 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/MRBanner.svg?style=flat)](https://cocoapods.org/pods/MRBanner)
 [![Platform](https://img.shields.io/cocoapods/p/MRBanner.svg?style=flat)](https://cocoapods.org/pods/MRBanner)
 
-## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+![banner.gif](https://upload-images.jianshu.io/upload_images/1755091-a741a7e1b5527c83.gif?imageMogr2/auto-orient/strip)
+
+
 
 ## Installation
-
-MRBanner is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'MRBanner'
@@ -22,8 +19,10 @@ pod 'MRBanner'
 
 ## Author
 
-301063915@qq.com, 301063915@qq.com
+MccRee 301063915@qq.com
 
 ## License
 
-MRBanner is available under the MIT license. See the LICENSE file for more info.
+WTFPL – Do What the Fuck You Want to Public License
+
+
