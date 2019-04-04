@@ -44,12 +44,12 @@
     __weak typeof(self) weakSelf = self;
     
     SDWebImageManager *mgr = [SDWebImageManager sharedManager];
-    [[mgr imageCache] queryCacheOperationForKey:url done:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
+    [[mgr imageCache] queryImageForKey:url options:SDWebImageRetryFailed context:nil completion:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
         if(image){
-            [_imageView setImage:image];
+            [weakSelf.imageView setImage:image];
             [weakSelf layoutSubviews];
         }else{
-            [_imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:weakSelf.placeHolder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [weakSelf.imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:weakSelf.placeHolder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 if(!error){
                     [weakSelf layoutSubviews];
                 }
