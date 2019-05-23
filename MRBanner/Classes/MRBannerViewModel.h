@@ -81,6 +81,9 @@ typedef NS_ENUM(NSInteger,MRBannerPageControlStyle){
 /* banner图片的切角大小, 默认 :0 . 如果设置数值,则有圆角 */
 @property (nonatomic,assign) CGFloat bannerCornerRadius;
 
+/**填充模式*/
+@property(nonatomic,assign) UIViewContentMode scaleModel;
+
 /* 模仿 天猫 首页banner 动态修改背景色 */
 @property (nonatomic,strong) NSArray<UIColor *> *bgChangeColorArr;
 

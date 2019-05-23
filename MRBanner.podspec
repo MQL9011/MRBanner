@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MRBanner'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = '轮播图,支持背景色跟随变化'
   s.description      = <<-DESC
                         轮播图,支持背景色跟随变化

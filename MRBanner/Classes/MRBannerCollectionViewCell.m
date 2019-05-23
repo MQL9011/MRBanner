@@ -34,7 +34,7 @@
     imageView.clipsToBounds = true;
     [self.contentView addSubview:imageView];
     _imageView = imageView;
-    
+    _imageView.contentMode = _bannerViewModel.scaleModel;
     MRBannerViewText *viewText = [[MRBannerViewText alloc] init];
     _viewText = viewText;
     [self addSubview:viewText];
